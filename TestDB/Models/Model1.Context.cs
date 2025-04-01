@@ -15,6 +15,15 @@ namespace TestDB.Models
     
     public partial class LibraryDBEntities : DbContext
     {
+        private static LibraryDBEntities _context;
+        public static LibraryDBEntities GetContext()
+        {
+            if (_context == null )
+                _context = new LibraryDBEntities();
+            return _context;
+        }
+
+
         public LibraryDBEntities()
             : base("name=LibraryDBEntities")
         {
