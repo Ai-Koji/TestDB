@@ -21,6 +21,7 @@ namespace TestDB
         // изменения
         List<BookDisplayItem> newBooks = new List<BookDisplayItem>();
         List<BookDisplayItem> changedBooks = new List<BookDisplayItem>();
+        List<BookDisplayItem> deletedBooks = new List<BookDisplayItem>();
 
         public Form1()
         {
@@ -60,12 +61,24 @@ namespace TestDB
         // удаление элемента
         private void DeleteItem_Click(object sender, EventArgs e)
         {
-            // TODO: реализовать удаление элементов
+            DataGridViewSelectedRowCollection Rows = dataGridViewBooks.SelectedRows;
+            if (Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in Rows)
+                {
+                    BookDisplayItem bookDisplay = displayBooks[row.Index];
+                    if (!newBooks.Contains(bookDisplay))
+                        deletedBooks.Add(bookDisplay);
+
+                    displayBooks.Remove(bookDisplay);
+                    newBooks.Remove(bookDisplay);
+                    changedBooks.Remove(bookDisplay);
+                }
+            }
         }
         // добавление элемента
         private void AddItem_Click(object sender, EventArgs e)
         {
-            // TODO: реализовать удаление элементов
             BookDisplayItem newBook = new BookDisplayItem(){
                 BookID = -1,
                 Title = "",
