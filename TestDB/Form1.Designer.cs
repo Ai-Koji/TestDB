@@ -29,35 +29,69 @@
         private void InitializeComponent()
         {
             this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.cmbFilter = new System.Windows.Forms.ComboBox();
+            this.cmbSort = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewBooks
             // 
             this.dataGridViewBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBooks.Location = new System.Drawing.Point(13, 13);
+            this.dataGridViewBooks.Location = new System.Drawing.Point(13, 92);
             this.dataGridViewBooks.Name = "dataGridViewBooks";
             this.dataGridViewBooks.RowHeadersWidth = 102;
             this.dataGridViewBooks.RowTemplate.Height = 40;
-            this.dataGridViewBooks.Size = new System.Drawing.Size(1239, 761);
+            this.dataGridViewBooks.Size = new System.Drawing.Size(1200, 721);
             this.dataGridViewBooks.TabIndex = 0;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(13, 27);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(402, 38);
+            this.txtSearch.TabIndex = 1;
+            // 
+            // cmbFilter
+            // 
+            this.cmbFilter.FormattingEnabled = true;
+            this.cmbFilter.Location = new System.Drawing.Point(610, 26);
+            this.cmbFilter.Name = "cmbFilter";
+            this.cmbFilter.Size = new System.Drawing.Size(264, 39);
+            this.cmbFilter.TabIndex = 2;
+            // 
+            // cmbSort
+            // 
+            this.cmbSort.FormattingEnabled = true;
+            this.cmbSort.Location = new System.Drawing.Point(949, 27);
+            this.cmbSort.Name = "cmbSort";
+            this.cmbSort.Size = new System.Drawing.Size(264, 39);
+            this.cmbSort.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 786);
+            this.ClientSize = new System.Drawing.Size(1225, 823);
+            this.Controls.Add(this.cmbSort);
+            this.Controls.Add(this.cmbFilter);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dataGridViewBooks);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewBooks;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.ComboBox cmbFilter;
+        private System.Windows.Forms.ComboBox cmbSort;
     }
 }
 
