@@ -77,6 +77,8 @@ namespace TestDB
                     newBooks.Remove(bookDisplay);
                     changedBooks.Remove(bookDisplay);
                 }
+                dataGridViewBooks.DataSource = displayBooks;
+                FormatDataGridView();
             } 
             else
                 MessageBox.Show("Выберите строку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
