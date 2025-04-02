@@ -42,7 +42,7 @@
             this.dataGridViewBooks.Name = "dataGridViewBooks";
             this.dataGridViewBooks.RowHeadersWidth = 102;
             this.dataGridViewBooks.RowTemplate.Height = 40;
-            this.dataGridViewBooks.Size = new System.Drawing.Size(1200, 721);
+            this.dataGridViewBooks.Size = new System.Drawing.Size(1643, 608);
             this.dataGridViewBooks.TabIndex = 0;
             // 
             // txtSearch
@@ -55,7 +55,7 @@
             // cmbFilter
             // 
             this.cmbFilter.FormattingEnabled = true;
-            this.cmbFilter.Location = new System.Drawing.Point(610, 26);
+            this.cmbFilter.Location = new System.Drawing.Point(1052, 26);
             this.cmbFilter.Name = "cmbFilter";
             this.cmbFilter.Size = new System.Drawing.Size(264, 39);
             this.cmbFilter.TabIndex = 2;
@@ -63,7 +63,7 @@
             // cmbSort
             // 
             this.cmbSort.FormattingEnabled = true;
-            this.cmbSort.Location = new System.Drawing.Point(949, 27);
+            this.cmbSort.Location = new System.Drawing.Point(1391, 27);
             this.cmbSort.Name = "cmbSort";
             this.cmbSort.Size = new System.Drawing.Size(264, 39);
             this.cmbSort.TabIndex = 3;
@@ -72,11 +72,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1225, 823);
+            this.ClientSize = new System.Drawing.Size(1668, 712);
             this.Controls.Add(this.cmbSort);
             this.Controls.Add(this.cmbFilter);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dataGridViewBooks);
+            this.MaximumSize = new System.Drawing.Size(1700, 800);
+            this.MinimumSize = new System.Drawing.Size(1700, 800);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
