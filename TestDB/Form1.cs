@@ -261,7 +261,47 @@ namespace TestDB
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            // TODO: Реализовать сохранение
+            var db = LibraryDBEntities.GetContext();
+
+            // измененные записи
+            foreach(BookDisplayItem item in changedBooks)
+            {
+                Books updateItem = db.Books.Find(item.BookID);
+                updateItem.Title = item.Title;
+                updateItem.PublicationYear = item.PublicationYear;
+                updateItem.Price = item.Price;
+            }
+
+            // удаленные записи
+            foreach (BookDisplayItem item in deletedBooks)
+            {
+                Books deleteItem = db.Books.Find(item.BookID);
+
+                foreach (Issues DeleteIssue in db.Issues.Where(b => b.BookID == item.BookID))
+                    db.Issues.Remove(DeleteIssue);
+
+                db.Books.Remove(deleteItem);
+            }
+
+            // новые записи
+            foreach(BookDisplayItem item in newBooks)
+            {
+                Books newItem = new Books()
+                {
+                    Title = item.Title,
+                    PublicationYear = item.PublicationYear,
+                    Price = item.Price,
+                    AuthorID = 1 //TODO: реализовать ввод автора
+                };
+                db.Books.Add(newItem);
+            }
+
+            db.SaveChanges();
+
+            newBooks.Clear();
+            changedBooks.Clear();
+            deletedBooks.Clear();
+            LoadBooksData();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
