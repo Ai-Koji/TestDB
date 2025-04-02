@@ -61,6 +61,8 @@ namespace TestDB
         // удаление элемента
         private void DeleteItem_Click(object sender, EventArgs e)
         {
+            SaveButton.Visible = true;
+            CancelButton.Visible = true;
             DataGridViewSelectedRowCollection Rows = dataGridViewBooks.SelectedRows;
             if (Rows.Count > 0)
             {
@@ -79,6 +81,8 @@ namespace TestDB
         // добавление элемента
         private void AddItem_Click(object sender, EventArgs e)
         {
+            SaveButton.Visible = true;
+            CancelButton.Visible = true;
             BookDisplayItem newBook = new BookDisplayItem(){
                 BookID = -1,
                 Title = "",
@@ -93,6 +97,8 @@ namespace TestDB
         // изменение элемента
         private void dataGridViewBooks_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            SaveButton.Visible = true;
+            CancelButton.Visible = true;
             // Проверяем, что индекс строки корректен
             if (e.RowIndex >= 0)
             {
