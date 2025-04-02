@@ -202,29 +202,27 @@ namespace TestDB
         private void LoadBooksData()
         {
             // 1. Получите контекст базы данных.
-            using (var db = LibraryDBEntities.GetContext())
+            var db = LibraryDBEntities.GetContext();
+            // 2. Получите данные из таблицы "Книги" и свяжите их с данными из таблицы "Авторы".
+            //Загружаем данные с авторами
+            originalBooks = db.Books
+            //.Include(b => b.Authors)
+            .ToList();
+            // Конвертируем в отображаемый формат
+            displayBooks = new List<BookDisplayItem>(originalBooks
+            .Select(b => new BookDisplayItem
             {
-                // 2. Получите данные из таблицы "Книги" и свяжите их с данными из таблицы "Авторы".
-                //Загружаем данные с авторами
-                originalBooks = db.Books
-                //.Include(b => b.Authors)
-                .ToList();
-                // Конвертируем в отображаемый формат
-                displayBooks = new List<BookDisplayItem>(originalBooks
-                .Select(b => new BookDisplayItem
-                {
-                    BookID = b.BookID,
-                    Title = b.Title,
-                    PublicationYear = b.PublicationYear,
-                    Price = b.Price,
-                    AuthorName = b.Authors?.FullName ?? "Неизвестный автор"
-                })
-                .ToList());
-                // 3. Привяжите данные к DataGridView.
-                dataGridViewBooks.DataSource = displayBooks;
-                // 4. Настройка DataGridView
-                FormatDataGridView();
-            }
+                BookID = b.BookID,
+                Title = b.Title,
+                PublicationYear = b.PublicationYear,
+                Price = b.Price,
+                AuthorName = b.Authors?.FullName ?? "Неизвестный автор"
+            })
+            .ToList());
+            // 3. Привяжите данные к DataGridView.
+            dataGridViewBooks.DataSource = displayBooks;
+            // 4. Настройка DataGridView
+            FormatDataGridView();
         }
 
         private void FormatDataGridView()
