@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.cmbSort = new System.Windows.Forms.ComboBox();
+            this.ContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +70,12 @@
             this.cmbSort.Size = new System.Drawing.Size(264, 39);
             this.cmbSort.TabIndex = 3;
             // 
+            // ContextMenu
+            // 
+            this.ContextMenu.ImageScalingSize = new System.Drawing.Size(40, 40);
+            this.ContextMenu.Name = "ContextMenu";
+            this.ContextMenu.Size = new System.Drawing.Size(61, 4);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -94,6 +102,7 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.ComboBox cmbSort;
+        private System.Windows.Forms.ContextMenuStrip ContextMenu;
     }
 }
 

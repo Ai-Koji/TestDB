@@ -23,6 +23,7 @@ namespace TestDB
         {
             LoadBooksData();
             InitializeComboBoxes();
+            InitializeContextMenu();
         }
         private void FilterControls_Changed(object sender, EventArgs e)
         {
@@ -37,6 +38,25 @@ namespace TestDB
             txtSearch.TextChanged += FilterControls_Changed;
             cmbFilter.SelectedIndexChanged += FilterControls_Changed;
             cmbSort.SelectedIndexChanged += FilterControls_Changed;
+        }
+        private void InitializeContextMenu()
+        {
+            ToolStripMenuItem deleteMenuItem = new ToolStripMenuItem("Удалить");
+            ToolStripMenuItem addMenuItem = new ToolStripMenuItem("Добавить");
+
+            ContextMenu.Items.AddRange(new[] { deleteMenuItem, addMenuItem });
+            dataGridViewBooks.ContextMenuStrip = ContextMenu;
+
+            deleteMenuItem.Click += DeleteMenuItem_Click;
+            addMenuItem.Click += AddMenuItem_Click;
+        }
+        private void DeleteMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: реализовать удаление элементов
+        }
+        private void AddMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: реализовать удаление элементов
         }
         private void ApplyFilters()
         {
