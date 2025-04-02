@@ -268,7 +268,10 @@ namespace TestDB
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            // TODO: Реализовать отмену изменений
+            newBooks.Clear();
+            changedBooks.Clear();
+            deletedBooks.Clear();
+            LoadBooksData();
         }
     }
 }
