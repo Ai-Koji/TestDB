@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +17,10 @@ namespace TestDB
     {
         private List<BookDisplayItem> displayBooks = new List<BookDisplayItem>();
         private List<Books> originalBooks;
+
+        // изменения
+        List<BookDisplayItem> newBooks = new List<BookDisplayItem>();
+
         public Form1()
         {
             InitializeComponent();
@@ -47,18 +53,28 @@ namespace TestDB
             ContextMenu.Items.AddRange(new[] { deleteMenuItem, addMenuItem });
             dataGridViewBooks.ContextMenuStrip = ContextMenu;
 
-            deleteMenuItem.Click += DeleteMenuItem_Click;
-            addMenuItem.Click += AddMenuItem_Click;
+            deleteMenuItem.Click += DeleteItem_Click;
+            addMenuItem.Click += AddItem_Click;
         }
         // удаление элемента
-        private void DeleteMenuItem_Click(object sender, EventArgs e)
+        private void DeleteItem_Click(object sender, EventArgs e)
         {
             // TODO: реализовать удаление элементов
         }
         // добавление элемента
-        private void AddMenuItem_Click(object sender, EventArgs e)
+        private void AddItem_Click(object sender, EventArgs e)
         {
             // TODO: реализовать удаление элементов
+            BookDisplayItem newBook = new BookDisplayItem(){
+                BookID = -1,
+                Title = "",
+                PublicationYear = -1,
+                Price = -1,
+                AuthorName = ""};
+            newBooks.Add(newBook);
+            displayBooks.Add(newBook);
+            dataGridViewBooks.DataSource = displayBooks;
+            FormatDataGridView();
         }
         // изменение элемента
         private void dataGridViewBooks_CellValueChanged(object sender, DataGridViewCellEventArgs e)
