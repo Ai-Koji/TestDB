@@ -66,6 +66,7 @@ namespace TestDB
             DataGridViewSelectedRowCollection Rows = dataGridViewBooks.SelectedRows;
             if (Rows.Count > 0)
             {
+                var result = MessageBox.Show($"Удалить {Rows.Count} записей?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 foreach (DataGridViewRow row in Rows)
                 {
                     BookDisplayItem bookDisplay = displayBooks[row.Index];
@@ -76,7 +77,9 @@ namespace TestDB
                     newBooks.Remove(bookDisplay);
                     changedBooks.Remove(bookDisplay);
                 }
-            }
+            } 
+            else
+                MessageBox.Show("Выберите строку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         // добавление элемента
         private void AddItem_Click(object sender, EventArgs e)
