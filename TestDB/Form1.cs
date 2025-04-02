@@ -50,13 +50,20 @@ namespace TestDB
             deleteMenuItem.Click += DeleteMenuItem_Click;
             addMenuItem.Click += AddMenuItem_Click;
         }
+        // удаление элемента
         private void DeleteMenuItem_Click(object sender, EventArgs e)
         {
             // TODO: реализовать удаление элементов
         }
+        // добавление элемента
         private void AddMenuItem_Click(object sender, EventArgs e)
         {
             // TODO: реализовать удаление элементов
+        }
+        // изменение элемента
+        private void dataGridViewBooks_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            // TODO: Реализовать событие изменения
         }
         private void ApplyFilters()
         {
@@ -152,6 +159,7 @@ namespace TestDB
 
         private void FormatDataGridView()
         {
+            dataGridViewBooks.ReadOnly = false;
             dataGridViewBooks.AutoGenerateColumns = false;
             dataGridViewBooks.Columns.Clear();
             // Настраиваем столбцы

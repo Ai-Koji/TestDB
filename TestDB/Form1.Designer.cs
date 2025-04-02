@@ -48,6 +48,7 @@
             this.dataGridViewBooks.RowTemplate.Height = 40;
             this.dataGridViewBooks.Size = new System.Drawing.Size(1643, 608);
             this.dataGridViewBooks.TabIndex = 0;
+            this.dataGridViewBooks.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooks_CellValueChanged);
             // 
             // txtSearch
             // 
