@@ -20,6 +20,7 @@ namespace TestDB
 
         // изменения
         List<BookDisplayItem> newBooks = new List<BookDisplayItem>();
+        List<BookDisplayItem> changedBooks = new List<BookDisplayItem>();
 
         public Form1()
         {
@@ -79,7 +80,36 @@ namespace TestDB
         // изменение элемента
         private void dataGridViewBooks_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            // TODO: Реализовать событие изменения
+            // Проверяем, что индекс строки корректен
+            if (e.RowIndex >= 0)
+            {
+                int bookDisplayIndex = e.RowIndex;
+
+                BookDisplayItem bookItem = displayBooks[bookDisplayIndex];
+
+                if (!newBooks.Contains(bookItem) && !changedBooks.Contains(bookItem))
+                   changedBooks.Add(bookItem);
+
+                var value = dataGridViewBooks.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                switch (e.ColumnIndex)
+                {
+                    case 0:
+                        bookItem.BookID = (int)value;
+                        break;
+                    case 1:
+                        bookItem.Title = (string)value;
+                        break;
+                    case 2:
+                        bookItem.AuthorName = (string)value;
+                        break;
+                    case 3:
+                        bookItem.PublicationYear = (int)value;
+                        break;
+                    case 4:
+                        bookItem.Price = (decimal)value;
+                        break;
+                }
+            }
         }
         private void ApplyFilters()
         {
