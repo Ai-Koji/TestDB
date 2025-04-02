@@ -34,6 +34,8 @@
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.cmbSort = new System.Windows.Forms.ComboBox();
             this.ContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,17 +78,40 @@
             this.ContextMenu.Name = "ContextMenu";
             this.ContextMenu.Size = new System.Drawing.Size(61, 4);
             // 
+            // SaveButton
+            // 
+            this.SaveButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.SaveButton.Location = new System.Drawing.Point(1410, 729);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(245, 80);
+            this.SaveButton.TabIndex = 5;
+            this.SaveButton.Text = "Сохранить";
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Visible = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(1122, 729);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(245, 80);
+            this.CancelButton.TabIndex = 6;
+            this.CancelButton.Text = "Отменить";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Visible = false;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1668, 712);
+            this.ClientSize = new System.Drawing.Size(1668, 821);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.cmbSort);
             this.Controls.Add(this.cmbFilter);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dataGridViewBooks);
-            this.MaximumSize = new System.Drawing.Size(1700, 800);
-            this.MinimumSize = new System.Drawing.Size(1700, 800);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -103,6 +128,8 @@
         private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.ComboBox cmbSort;
         private System.Windows.Forms.ContextMenuStrip ContextMenu;
+        private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Button CancelButton;
     }
 }
 

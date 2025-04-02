@@ -182,5 +182,15 @@ namespace TestDB
                 DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
             });
         }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            // TODO: Реализовать сохранение
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            // TODO: Реализовать отмену изменений
+        }
     }
 }
