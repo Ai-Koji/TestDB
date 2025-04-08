@@ -110,13 +110,31 @@ namespace TestDB
         }
         private void ChangeAuthor(int rowIndex)
         {
-            // выбранная книга
-            var selectedBook = displayBooks[rowIndex];
-
             // выбор автора через новую форму
             var formSelect = new Form2();
-            formSelect.Show();
-            // TODO: добавить сохранение изменений
+            formSelect.ShowDialog();
+
+            // парсим данные после закрытия формы         
+            int newAuthorID = formSelect.authorId;
+            string newAuthorName = formSelect.authorName;
+            
+            // изменяем значение
+            BookDisplayItem bookItem = displayBooks[rowIndex];
+            if (newAuthorID != bookItem.AuthorID)
+            {
+                bookItem.AuthorID = newAuthorID;
+                bookItem.AuthorName = newAuthorName;
+
+                // обновляем datagrid
+                var filteredBooks = displayBooks.AsQueryable();
+                dataGridViewBooks.DataSource = filteredBooks.ToList();
+
+                if (!changedBooks.Contains(bookItem))
+                    changedBooks.Add(bookItem);
+
+                SaveButton.Visible = true;
+                CancelButton.Visible = true;
+            }
         }
 
         // изменение элемента
@@ -142,9 +160,6 @@ namespace TestDB
                         break;
                     case 1:
                         bookItem.Title = (string)value;
-                        break;
-                    case 2:
-                        bookItem.AuthorName = (string)value;
                         break;
                     case 3:
                         bookItem.PublicationYear = (int)value;
@@ -213,6 +228,7 @@ namespace TestDB
         private class BookDisplayItem
         {
             public string AuthorName { get; set; }
+            public int AuthorID { get; set; }
             public int BookID { get; set; }
             public string Title { get; set; }
             public int? PublicationYear { get; set; }
@@ -225,9 +241,7 @@ namespace TestDB
             var db = LibraryDBEntities.GetContext();
             // 2. Получите данные из таблицы "Книги" и свяжите их с данными из таблицы "Авторы".
             //Загружаем данные с авторами
-            originalBooks = db.Books
-            //.Include(b => b.Authors)
-            .ToList();
+            originalBooks = db.Books.ToList();
             // Конвертируем в отображаемый формат
             displayBooks = new List<BookDisplayItem>(originalBooks
             .Select(b => new BookDisplayItem
@@ -236,7 +250,8 @@ namespace TestDB
                 Title = b.Title,
                 PublicationYear = b.PublicationYear,
                 Price = b.Price,
-                AuthorName = b.Authors?.FullName ?? "Неизвестный автор"
+                AuthorName = b.Authors?.FullName ?? "Неизвестный автор",
+                AuthorID = b.Authors.AuthorID
             })
             .ToList());
             // 3. Привяжите данные к DataGridView.
@@ -292,6 +307,7 @@ namespace TestDB
                 updateItem.Title = item.Title;
                 updateItem.PublicationYear = item.PublicationYear;
                 updateItem.Price = item.Price;
+                updateItem.AuthorID= item.AuthorID;
             }
 
             // удаленные записи

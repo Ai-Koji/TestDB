@@ -15,6 +15,7 @@ namespace TestDB
     {
         // айди выбранного автора
         public int authorId { get; private set; }
+        public string authorName { get; private set; }
         public Form2()
         {
             InitializeComponent();
@@ -44,6 +45,7 @@ namespace TestDB
         {
             // возвращаем айдишник 
             authorId = (int)cmb.SelectedValue;
+            authorName = cmb.Text;
             this.Close();
         }
 
