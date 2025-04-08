@@ -32,6 +32,9 @@ namespace TestDB
             LoadBooksData();
             InitializeComboBoxes();
             InitializeContextMenu();
+
+            // Двойное нажатие
+            dataGridViewBooks.CellDoubleClick += DataGridViewBooks_CellDoubleClick;
         }
         private void FilterControls_Changed(object sender, EventArgs e)
         {
@@ -99,6 +102,23 @@ namespace TestDB
             dataGridViewBooks.DataSource = displayBooks;
             FormatDataGridView();
         }
+        private void DataGridViewBooks_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // если выбрал ячейку с автором - открываем форму с выбором
+            if (e.RowIndex >= 0 && e.ColumnIndex == 2) // 2 - индекс третьего столбца (AuthorName)
+                ChangeAuthor(e.RowIndex);
+        }
+        private void ChangeAuthor(int rowIndex)
+        {
+            // выбранная книга
+            var selectedBook = displayBooks[rowIndex];
+
+            // выбор автора через новую форму
+            var formSelect = new Form2();
+            formSelect.Show();
+            // TODO: добавить сохранение изменений
+        }
+
         // изменение элемента
         private void dataGridViewBooks_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -235,6 +255,7 @@ namespace TestDB
             {
                 DataPropertyName = "BookID",
                 HeaderText = "ID Книги",
+                ReadOnly = true
             });
             dataGridViewBooks.Columns.Add(new DataGridViewTextBoxColumn
             {
