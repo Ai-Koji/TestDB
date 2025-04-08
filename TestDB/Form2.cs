@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestDB.Models;
 
 namespace TestDB
 {
     public partial class Form2 : Form
     {
+        // айди выбранного автора
+        public int authorId { get; private set; }
         public Form2()
         {
             InitializeComponent();
@@ -20,7 +23,12 @@ namespace TestDB
         }
         private void InitializeComboBoxes()
         {
-            // TODO: добавить инициализацию cmb
+            var authors = LibraryDBEntities.GetContext().Authors;
+
+            cmb.DataSource = authors.ToList(); // привязываем данные к ComboBox
+            cmb.DisplayMember = "FullName"; // привязываем ячейку FullName к отображению 
+            cmb.ValueMember = "AuthorID"; // привязываем AuthorID как значение элемента
+        }
         }
 
 
