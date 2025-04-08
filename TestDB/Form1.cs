@@ -302,6 +302,9 @@ namespace TestDB
             changedBooks.Clear();
             deletedBooks.Clear();
             LoadBooksData();
+
+            SaveButton.Visible = false;
+            CancelButton.Visible = false;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -310,6 +313,9 @@ namespace TestDB
             changedBooks.Clear();
             deletedBooks.Clear();
             LoadBooksData();
+
+            SaveButton.Visible = false;
+            CancelButton.Visible = false;
         }
     }
 }
