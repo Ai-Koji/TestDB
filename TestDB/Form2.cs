@@ -19,7 +19,7 @@ namespace TestDB
         {
             InitializeComponent();
             InitializeComboBoxes();
-            // TODO: добавить события для кнопок с возвратом значений
+            InitializeButtons();
         }
         private void InitializeComboBoxes()
         {
@@ -29,8 +29,23 @@ namespace TestDB
             cmb.DisplayMember = "FullName"; // привязываем ячейку FullName к отображению 
             cmb.ValueMember = "AuthorID"; // привязываем AuthorID как значение элемента
         }
+        private void InitializeButtons()
+        {
+            Cancel.Click += CancelButton_Click;
+            Save.Click += SaveButton_Click;
         }
-
+        private void CancelButton_Click (object sender, EventArgs e)
+        {
+            // возвращаем 0, в качестве отмены 
+            authorId = 0;
+            this.Close();
+        }
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            // возвращаем айдишник 
+            authorId = (int)cmb.SelectedValue;
+            this.Close();
+        }
 
     }
 }
