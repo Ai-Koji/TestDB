@@ -234,7 +234,7 @@ namespace TestDB
             dataGridViewBooks.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "BookID",
-                HeaderText = "ID Книги"
+                HeaderText = "ID Книги",
             });
             dataGridViewBooks.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -244,7 +244,8 @@ namespace TestDB
             dataGridViewBooks.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "AuthorName",
-                HeaderText = "Автор"
+                HeaderText = "Автор",
+                ReadOnly = true
             });
             dataGridViewBooks.Columns.Add(new DataGridViewTextBoxColumn
             {
