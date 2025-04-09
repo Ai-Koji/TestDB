@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +35,7 @@ namespace TestDB
 
             // Двойное нажатие
             dataGridViewBooks.CellDoubleClick += DataGridViewBooks_CellDoubleClick;
+            dataGridViewBooks.CellValueChanged += dataGridViewBooks_CellValueChanged;
         }
         private void FilterControls_Changed(object sender, EventArgs e)
         {
