@@ -31,6 +31,7 @@ namespace TestDB
             LoadBooksData();
             InitializeComboBoxes();
             InitializeContextMenu();
+            dataGridViewBooks.CellValueChanged += dataGridViewBooks_CellValueChanged;
         }
         private void FilterControls_Changed(object sender, EventArgs e)
         {
